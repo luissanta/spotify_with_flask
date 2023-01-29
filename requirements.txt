@@ -1,0 +1,9 @@
+flask
+flask-testing
+python-decouple
+python-dotenv
+psycopg2
+flask-cors
+flask-sqlalchemy
+marshmallow-sqlalchemy
+flask-restful
