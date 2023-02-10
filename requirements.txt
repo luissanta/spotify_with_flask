@@ -4,6 +4,6 @@ python-decouple
 python-dotenv
 psycopg2
 flask-cors
-flask-sqlalchemy
+flask-sqlalchemy==3.0.3
 marshmallow-sqlalchemy
 flask-restful

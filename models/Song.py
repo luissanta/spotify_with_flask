@@ -13,6 +13,3 @@ class Song(db.Model):
     seconds = db.Column(db.Integer)
     interpreter = db.Column(db.String(128))
     albums = db.relationship(Album, secondary='album_song', back_populates='songs')
-
-    def __repr__(self):
-        return "{}-{}-{}-{}".format(self.title, self.minutes, self.seconds, self.interpreter)
