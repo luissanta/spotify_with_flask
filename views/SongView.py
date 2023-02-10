@@ -2,16 +2,19 @@ from flask_restful import Resource
 from models.models import Song, SongSchema
 from flask import request
 from Utils.db import db
+from flask_jwt_extended import jwt_required
 
 song_schema = SongSchema()
 
 class SongsView(Resource):
 
     @classmethod
+    @jwt_required()
     def get(cls):
         return [song_schema.dump(song) for song in Song.query.all()], 200
 
     @classmethod
+    @jwt_required()
     def post(cls):
         new_song = Song(
             title=request.json['title'],
@@ -28,11 +31,13 @@ class SongsView(Resource):
 class SongView(Resource):
 
     @classmethod
+    @jwt_required()
     def get(cls, id_song):
         song = Song.query.get_or_404(id_song)
         return song_schema.dump(song), 200
 
     @classmethod
+    @jwt_required()
     def put(cls, id_song):
         song = Song.query.get_or_404(id_song)
         song.title = request.json.get('title', song.title)
@@ -43,6 +48,7 @@ class SongView(Resource):
         return song_schema.dump(song), 201
 
     @classmethod
+    @jwt_required()
     def delete(cls, id_song):
         song = Song.query.get_or_404(id_song)
         db.session.delete(song)

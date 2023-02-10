@@ -7,3 +7,4 @@ flask-cors
 flask-sqlalchemy==3.0.3
 marshmallow-sqlalchemy
 flask-restful
+flask-jwt-extended
